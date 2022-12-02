@@ -5,7 +5,7 @@ Opcion1: dos cadenas aleatorias unidas.
 
 Opcion2: dos cadenas aleatorias unidas que se vuelven a desordenar.
 
-Las opciones 1 y 2 tienen un tamaño deficino de 10 caracteres.
+Las opciones 1 y 2 tienen un tamaño definido de 10 caracteres.
 
 Opcion3: dos cadenas aleatorias unidas que se vuelven a desordenar sin caracteres especiales.
 
