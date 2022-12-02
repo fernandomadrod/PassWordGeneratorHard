@@ -6,8 +6,8 @@ import string
 #Opcion1: dos cadenas aleatorias unidas
 #Opcion2: dos cadenas aleatorias unidas que se vuelven a desordenar
 #Opcion3: dos cadenas aleatorias unidas que se vuelven a desordenar sin caracteres especiales
-#Opcion4: dos cadenas aleatorias unidas de 1000 caracteres en total que se vuelven a desordenar
-# se le suman otras dos cadenas aleatorias desordenadas de 1000 caracteres, vuelve a desordenar los 2000 caracteres
+#Opcion4: dos cadenas aleatorias unidas del tamaño seleccionado * 500 caracteres en total que se vuelven a desordenar
+# se le suman otras dos cadenas aleatorias desordenadas de 1000 caracteres, vuelve a desordenar los caracteres
 # y se selecciona un subconjunto aleatorio con un tamaño de caracteres seleccionado
 letras= string.ascii_letters
 letrasMayus=string.ascii_uppercase
@@ -17,8 +17,6 @@ alfabeto= letras+ letrasMayus + digitos + caracteresEspeciales
 alfabetoSinEsp= letras+ letrasMayus + digitos 
 def genera(n):
     tam1=5
-    tam2=500
-    subTam=14
     
     if(n==1 or n==2):
       while True:
@@ -69,7 +67,7 @@ def genera(n):
 def generaTam(n,subTam):
     if(n==4):
      while True:
-        tam2=500
+        tam2=subTam*500
         password1 = ''
         password2 = ''
         password3 = ''
@@ -77,7 +75,7 @@ def generaTam(n,subTam):
         for i in range(tam2):
             password1 += ''.join(secrets.choice(alfabeto))
         if(sum(char in caracteresEspeciales for char in password1)<30 and 
-            sum(char in digitos for char in password1 )>=90)and sum(char in letrasMayus for char in password1)<90:
+            sum(char in digitos for char in password1 )<=90)and sum(char in letrasMayus for char in password1)<90:
            # break
            i=0
         for i in range (tam2):
@@ -88,7 +86,7 @@ def generaTam(n,subTam):
         for i in range(tam2):
             password3 += ''.join(secrets.choice(alfabeto))
         if(sum(char in caracteresEspeciales for char in password3)<20 and 
-            sum(char in digitos for char in password3 )>=80) and sum(char in letrasMayus for char in password3)<30:
+            sum(char in digitos for char in password3 )<=80) and sum(char in letrasMayus for char in password3)<30:
                i=0
         
         for  i in range (tam2):
@@ -131,7 +129,7 @@ def option3():
      print('Contraseña: ' +genera(3))
 def option4():
      print('\nOpción Seleccionada \'Willy Level\'\n')
-     print('Inserte el la longitud que desea de la contraseña:\n')
+     print('Inserte la longitud que desea de la contraseña:\n')
      tex_number=''
      try:   
         tex_number=input("")  
