@@ -1,12 +1,12 @@
 # PassWordGeneratorHard
 Generador de contraseñas seguras
 
-Opcion1: dos cadenas aleatorias unidas.
+Opcion1: Una cadena aleatoria que cumple unas restricciones minimas
 
-Opcion2: dos cadenas aleatorias unidas que se vuelven a desordenar.
+Opcion2: Una cadena aleatoria que cumple unas restricciones minimas que se vuelven a desordenar.
 
-Las opciones 1 y 2 tienen un tamaño definido de 10 caracteres.
+Opcion3: Una cadena aleatoria que cumple unas restricciones minimas sin caracteres especiales.
 
-Opcion3: dos cadenas aleatorias unidas que se vuelven a desordenar sin caracteres especiales.
+Las opciones 1, 2 y 3 tienen un tamaño definido de 10 caracteres.
 
-Opcion4: dos cadenas aleatorias unidas de un tamaño variable de caracteres en total que se vuelven a desordenar, se le suman otras dos cadenas aleatorias desordenadas de del mismo tamaño de caracteres, vuelve a desordenar y se selecciona un subconjunto aleatorio con un tamaño de caracteres seleccionado.
+Opcion4: dos cadenas aleatorias unidas de un tamaño variable de caracteres que se vuelven a desordenar, vuelve a desordenar y se selecciona un subconjunto aleatorio del total del nuevo alfabeto creado por las dos cadenas anteriores, con un tamaño de caracteres seleccionado.
