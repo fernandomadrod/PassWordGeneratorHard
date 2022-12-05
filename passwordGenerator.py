@@ -1,111 +1,95 @@
-#Generador de contraseñas Fernando Madroñal
+#Generador de contraseñas 
 
 import random
 import secrets
 import string
-#Opcion1: dos cadenas aleatorias unidas
-#Opcion2: dos cadenas aleatorias unidas que se vuelven a desordenar
-#Opcion3: dos cadenas aleatorias unidas que se vuelven a desordenar sin caracteres especiales
-#Opcion4: dos cadenas aleatorias unidas del tamaño seleccionado * 500 caracteres en total que se vuelven a desordenar
-# se le suman otras dos cadenas aleatorias desordenadas de 1000 caracteres, vuelve a desordenar los caracteres
-# y se selecciona un subconjunto aleatorio con un tamaño de caracteres seleccionado
-letras= string.ascii_letters
+import time
+letras= string.ascii_lowercase
 letrasMayus=string.ascii_uppercase
 digitos=string.digits
 caracteresEspeciales=string.punctuation
 alfabeto= letras+ letrasMayus + digitos + caracteresEspeciales
 alfabetoSinEsp= letras+ letrasMayus + digitos 
 def genera(n):
-    tam1=5
-    
+    tam1=10    
     if(n==1 or n==2):
-      while True:
-        password1 = ''
-        password2 = ''
-        for i in range(tam1):
-            password1 += ''.join(secrets.choice(alfabeto))
-        if(any(char in caracteresEspeciales for char in password1) and 
-            sum(char in digitos for char in password1 )>=3) and sum(char in letrasMayus for char in password1)<1:
-             i=0
-             
-        for i in range (tam1):
-            password2 += ''.join(secrets.choice(alfabeto))
-        if(any(char in caracteresEspeciales for char in password2) and 
-            sum(char in digitos for char in password2 )>=2):
-               i=0
+
+        while True:
+            pwd = ''
+            for i in range(tam1):
+                pwd += ''.join(secrets.choice(alfabeto))
+
+            if (any(char in caracteresEspeciales for char in pwd) and 
+                sum(char in digitos for char in pwd)>=3 and sum(char in letrasMayus for char in pwd)>2 and sum(char in letras for char in pwd)>2):
+                    break
 
         if(n==1):
-            p=password2 + password1
-            return p
-
+            return pwd
+            
         if(n==2):
-            t1=tam1+tam1
-            p=password2 + password1
-            password=random.sample((p),(t1))
+            password=random.sample(pwd,tam1)
             password=''.join(password)
             return password
 
-    elif(n==3):
-     while True:
-        password1 = ''
-        password2 = ''
-        for i in range(tam1):
-            password1 += ''.join(secrets.choice(alfabetoSinEsp))
-        if(sum(char in digitos for char in password1 )>=3) and sum(char in letrasMayus for char in password1)<1:
-             i=0
+    if(n==3):
+        while True:
+            pwd = ''
+            for i in range(tam1):
+                pwd += ''.join(secrets.choice(alfabetoSinEsp))
 
-        for i in range (tam1):
-            password2 += ''.join(secrets.choice(alfabetoSinEsp))
-        if(sum(char in digitos for char in password2 )>=2):
-               i=0
-        t1=tam1+tam1
-        p=password2 + password1
-        password=random.sample((p),(t1))
+            if (sum(char in digitos for char in pwd)>=3 and sum(char in letrasMayus for char in pwd)>2 and sum(char in letras for char in pwd)>2):
+                    break
+
+        password=random.sample(pwd,tam1)
         password=''.join(password)
         return password
+    
 
 def generaTam(n,subTam):
-    if(n==4):
-     while True:
+ if(n==4):
+    while True:
         tam2=subTam*500
         password1 = ''
-        password2 = ''
-        password3 = ''
-        password4 = ''
         for i in range(tam2):
             password1 += ''.join(secrets.choice(alfabeto))
-        if(sum(char in caracteresEspeciales for char in password1)<30 and 
-            sum(char in digitos for char in password1 )<=90)and sum(char in letrasMayus for char in password1)<90:
-           # break
-           i=0
-        for i in range (tam2):
-            password2 += ''.join(secrets.choice(alfabeto))
-        if(any(char in caracteresEspeciales for char in password2) and 
-            sum(char in digitos for char in password2 )>=50):
-                i=0
+        if(sum(char in caracteresEspeciales for char in password1)>100 and 
+            sum(char in digitos for char in password1 )>100 and sum(char in letrasMayus for char in password1)>100 and sum(char in letras for char in password1)>100):
+                 break
+    while True: 
+        tam2=subTam*500
+        password2 = ''
         for i in range(tam2):
-            password3 += ''.join(secrets.choice(alfabeto))
-        if(sum(char in caracteresEspeciales for char in password3)<20 and 
-            sum(char in digitos for char in password3 )<=80) and sum(char in letrasMayus for char in password3)<30:
-               i=0
-        
-        for  i in range (tam2):
-            password4 += ''.join(secrets.choice(alfabeto))
-        if(any(char in caracteresEspeciales for char in password4) and 
-                sum(char in digitos for char in password4 )>=50):
-               i=0
+            password2 += ''.join(secrets.choice(alfabeto))
+        if(sum(char in caracteresEspeciales for char in password2)>90 and 
+            sum(char in digitos for char in password2 )>100 and sum(char in letrasMayus for char in password2)>110 and sum(char in letras for char in password2)>100):
+                break
+               
+       # for i in range (tam2):
+            
+        #    if(sum(char in caracteresEspeciales for char in password2)>90 and 
+         #   sum(char in digitos for char in password2 )>100 and sum(char in letrasMayus for char in password2)>100 and sum(char in letras for char in password2)>100):
+          #      break
 
-        t2=tam2*2
-        pHard1=password3+password4
-        phard2=password2+password1
-        passHard1=random.sample(pHard1,t2)
-        passHard2=random.sample(phard2,t2)
-        union=passHard2+passHard1
-        passdHard=''.join(union)
-        willy=random.sample(passdHard,subTam)
-        willy=''.join(willy)
-        return willy
 
+    t2=tam2*2
+    phard1=password2+password1     
+    passHard1=random.sample(phard1,t2)  
+    passdHard=''.join(passHard1)
+
+    
+    while True:  
+        will=''
+        for i in range (subTam):
+            will += ''.join(secrets.choice(passdHard))
+        if(sum(char in caracteresEspeciales for char in will)>1 and sum(char in digitos for char in will)>1
+         and sum(char in letras for char in will)>2 and sum(char in letrasMayus for char in will)>1):           
+            break
+
+    willy=''.join(will)
+    return willy
+
+
+     
 menu_options = {
     1: 'Normal',
     2: 'Hard',
@@ -129,17 +113,24 @@ def option3():
      print('Contraseña: ' +genera(3))
 def option4():
      print('\nOpción Seleccionada \'Willy Level\'\n')
-     print('Inserte la longitud que desea de la contraseña:\n')
-     tex_number=''
-     try:   
-        tex_number=input("")  
-     except:
+     print('Inserte la longitud que desea de la contraseña:')
+     tex_number=0
+     while True:
+        try:   
+            tex_number=int(input("Longitud mínima de 10 carácteres\n")) 
+            if  tex_number < 10:
+                print("El número de carácteres introducido debe ser mayor o igual a 10")
+                break
+                 
+            subTam=int(tex_number)
+        except:      
             print('Entrada Incorrecta. por favor inserte un número ...')
-            
-     subTam=int(tex_number)
-     print('\nContraseña: ' + generaTam(4,subTam) )
-     if(subTam>=30):
-        print('Te has pasado Willy\n')
+     
+        print('\nContraseña: ' + generaTam(4,subTam) )
+        if(subTam>=30):
+            print('¡Te has pasado Willy!\n')
+        break
+
 if __name__=='__main__':
     while(True):
         print("\nGenerador de Contraseñas\n")
@@ -149,6 +140,7 @@ if __name__=='__main__':
             option = int(input('\nSeleccione el tipo de contraseña: '))
         except:
             print('Entrada Incorrecta. por favor inserte un número ...')
+        
         #Elige la entrada
         if option == 1:
            option1()
@@ -159,7 +151,8 @@ if __name__=='__main__':
         elif option == 4:
             option4()
         elif option == 5:
-            print('Thanks message before exiting')
+            print('Gracias por usar el Generador de Contraseñas')
+            time.sleep(2)
             exit()
         else:
             print('\nOpcion invalida. Por favor inserte un numero entre 1 y 4.\n')
