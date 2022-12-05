@@ -64,13 +64,6 @@ def generaTam(n,subTam):
             sum(char in digitos for char in password2 )>100 and sum(char in letrasMayus for char in password2)>110 and sum(char in letras for char in password2)>100):
                 break
                
-       # for i in range (tam2):
-            
-        #    if(sum(char in caracteresEspeciales for char in password2)>90 and 
-         #   sum(char in digitos for char in password2 )>100 and sum(char in letrasMayus for char in password2)>100 and sum(char in letras for char in password2)>100):
-          #      break
-
-
     t2=tam2*2
     phard1=password2+password1     
     passHard1=random.sample(phard1,t2)  
